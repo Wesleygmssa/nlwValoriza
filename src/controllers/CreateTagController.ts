@@ -1,0 +1,3 @@
+class CreateTagController {}
+
+export { CreateTagController };
