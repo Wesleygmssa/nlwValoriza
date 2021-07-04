@@ -26,6 +26,7 @@ router.post("/login", authenticateUserControler.handle);
 router.post(
   "/compliments",
   ensureAuthenticated,
+  ensureAdmin,
   createComlimentController.handle
 );
 

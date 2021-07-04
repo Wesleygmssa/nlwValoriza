@@ -17,10 +17,10 @@ export function ensureAuthenticated(
     return response.status(401).json({ message: "Token missing" });
   }
 
-  const [, token] = authtoken.split("");
+  const [, token] = authtoken.split(" ");
 
   try {
-    // validar se tiken é valido
+    // validar se token é valido
     const { sub } = verify(token, "jsjsgfs5255454slsnskfgs4544f") as IPayload;
 
     request.user_id = sub;
