@@ -5,7 +5,7 @@ import { ensureAdmin } from "./middlewares/ensureAdmin";
 import { AuthenticateUserSerivice } from "./services/AuthenticateUserService";
 import { AuthenticateUserController } from "./controllers/AuthenticateUserController";
 import { CreateComplimentContoller } from "./controllers/CreateComplimentController";
-import { ensureAuthenticated } from "./middlewares/emsureAuthenticated";
+import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 
 const router = Router();
 
@@ -23,6 +23,10 @@ router.post(
 );
 router.post("/users", createUserController.handle);
 router.post("/login", authenticateUserControler.handle);
-router.post("/compliments", createComlimentController.handle);
+router.post(
+  "/compliments",
+  ensureAuthenticated,
+  createComlimentController.handle
+);
 
 export { router };
